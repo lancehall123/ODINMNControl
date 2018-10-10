@@ -103,5 +103,5 @@ foreach($masternodes as $wallet) {
 	echo "<p><strong>Public ip-address</strong>" . $MNStatus['netaddr'] . "</p>";
 }
 ?>
-	s</body>
+	</body>
 </html>
