@@ -14,10 +14,10 @@ ini_set('display_errors', 1);
 error_reporting(-1);
 require_once('wallet_func.php');
 $control_wallet = array();
-$control_wallet[] = array("name" => "[own name]", "user" => "[RPCUser]", "password" => "[RPCPassword]", "host" => "[RPCHost]", "port" => "[RPCPort]");
+$control_wallet[] = array("name" => "mn01", "user" => "user", "password" => "password", "host" => "127.0.0.1", "port" => "1988");
 $masternodes = array();
-$masternodes[] = array("name" => "[own name]", "user" => "[RPCUser]", "password" => "[RPCPassword]", "host" => "[RPCHost]", "port" => "[RPCPort]");
-$masternodes[] = array("name" => "[own name]", "user" => "[RPCUser]", "password" => "[RPCPassword]", "host" => "[RPCHost]", "port" => "[RPCPort]");
+$masternodes[] = array("name" => "mn01", "user" => "user", "password" => "password", "host" => "127.0.0.1", "port" => "1988");
+//$masternodes[] = array("name" => "[own name]", "user" => "[RPCUser]", "password" => "[RPCPassword]", "host" => "[RPCHost]", "port" => "[RPCPort]");
 foreach($control_wallet as $wallet) {
 	$ODIN = new ODIN($wallet["user"], $wallet["password"], $wallet["host"], $wallet["port"]);
 	$WalletInfo = $ODIN->getInfo();
@@ -41,7 +41,8 @@ foreach($control_wallet as $wallet) {
 			$txs_processed[$tx["txid"]]["confirmations"] = $tx["confirmations"];
 			$txs_processed[$tx["txid"]]["txid"] = $tx["txid"];
 			$txs_processed[$tx["txid"]]["blocktime"] = $tx["blocktime"];
-			if(isset($tx["generated"])) {
+
+            if(isset($tx["generated"])) {
 				$txs_processed[$tx["txid"]]["category"] = "generated";
 				if($tx["category"] == "receive") {
 					$txs_processed[$tx["txid"]]["address"] = $tx["address"];
@@ -56,11 +57,11 @@ foreach($control_wallet as $wallet) {
 			}
 		}
 		
-		function custom_sort($a,$b) {
-			return $a['blocktime']<$b['blocktime'];
-		}
+		//function custom_sort($a,$b) {
+		//	return $a['blocktime']<$b['blocktime'];
+		//}
 		
-		usort($txs_processed, "custom_sort");
+		//usort($txs_processed, "custom_sort");
 		?>
 		<table style="margin: auto; min-width: 80%;">
 			<thead>
@@ -101,6 +102,9 @@ foreach($masternodes as $wallet) {
 	echo "<p><strong>Status</strong>" . $MNStatus['message'] . "</p>";
 	echo "<p><strong>Address</strong>" . $MNStatus['addr'] . "</p>";
 	echo "<p><strong>Public ip-address</strong>" . $MNStatus['netaddr'] . "</p>";
+	$MNCount = $ODIN->getMasternodeCount();
+    echo "<h1>" . $wallet['name'] . "</h1>";
+    echo "<p><strong>Count</strong>" . $MNCount['total'] . "</p>";
 }
 ?>
 	</body>

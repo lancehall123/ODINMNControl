@@ -18,7 +18,7 @@ class ODIN {
 	}
 	
 	public function getLastTransactions() {
-		$transactions = $this->odin->listtransactions('*',250);
+		$transactions = $this->odin->listtransactions();
 		if($this->odin->error) {
 		}
 		return $transactions;
@@ -31,5 +31,12 @@ class ODIN {
 		}
 		return $status;
 	}
+    public function getMasternodeCount() {
+        $status = $this->odin->getmasternodecount();
+        if($this->odin->error) {
+            $status = false;
+        }
+        return $status;
+    }
 }
 ?>
