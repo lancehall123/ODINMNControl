@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="themes/Slate/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/jqplot/jquery.jqplot.css">
     <link rel="stylesheet" href="stylesheets/style.css">
+    <script>
+        var auto_refresh;
+        auto_refresh = setInterval(
+            (function () {
+                $("#randomtext").load("index.php" + '#randomtext"'); //Load the content into the div
+            }), 1000);
+    </script>
 </head>
 <body>
 <div role="navigation" class="nav navbar navbar-default navbar-fixed-top">
@@ -24,7 +31,7 @@
         <div class="col-md-2 col-md-offset-1">
             <div class="panel panel-default hidden-sm hidden-xs">
                 <div class="panel-heading"><strong>Block Count</strong></div>
-                <div class="panel-body">
+                <div id="randomtext" class="panel-body">
                         <?php
                         require_once('wallet_func.php');
                         $control_wallet = array();
@@ -34,7 +41,9 @@
                         foreach($control_wallet as $wallet) {
                             $ODIN = new ODIN($wallet["user"], $wallet["password"], $wallet["host"], $wallet["port"]);
                             $WalletInfo = $ODIN->getInfo();
+
                             $MNStatus = $ODIN->getMasternodeStatus();
+                            $ListMasterNodes = $ODIN->listMasterNodes($MNStatus['addr']);
                             $MNCount = $ODIN->getMasternodeCount();
                         }
                         ?>
@@ -58,7 +67,10 @@
                         $MNStatus = $ODIN->getMasternodeStatus();
                     }
                     ?>
-                    <lab><?php echo $MNCount['total']; ?></lab>
+                    <lab><?php echo $MNCount['total'];
+                        echo $ListMasterNodes['lastseen'];
+                    ?></lab>
+
                 </div>
             </div>
         </div>

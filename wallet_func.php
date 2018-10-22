@@ -38,5 +38,12 @@ class ODIN {
         }
         return $status;
     }
+    public function listMasterNodes($filter) {
+        $status = $this->odin->listmasternodes($filter);
+        if($this->odin->error) {
+            $status = false;
+        }
+        return $status;
+    }
 }
 ?>
