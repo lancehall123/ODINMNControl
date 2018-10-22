@@ -134,11 +134,10 @@
         <div class="panel-heading"><strong>Latest Transactions</strong></div>
         <table id="recent-table" class="table table-bordered table-striped">
             <tr>
-            <th class="text-center">Block</th>
-                <th class="hidden-xs text-center">Hash</th>
-                <th class="hidden-xs text-center">Recipients</th>
+            <th class="text-center">Block Time</th>
+                <th class="hidden-xs text-center">Transaction ID</th>
                 <th class="text-center">Amount (ODIN)</th>
-                <th class="text-center">Timestamp</th>
+
             </tr>
             <tr>
                 <?php
@@ -186,9 +185,6 @@
                     <lab><?php echo $tx["txid"]; ?></lab>
                 </td>
                 <td>
-
-                </td>
-                <td>
                     <lab><?php echo $tx["amount"]; ?></lab>
                 </td>
 
@@ -211,18 +207,6 @@
     </div>
 </div>
 <div class="navbar navbar-default navbar-fixed-bottom hidden-xs">
-    <div class="col-md-4">
-        <ul class="nav navbar-nav">
-            <li class="pull-left"></li>
-        </ul>
-    </div>
-</div>
-<div class="col-md-4">
-    <ul class="nav">
-        <li style="margin-left:80px;margin-right:80px;" class="text-center">
-            <p style="margin-top:15px;"><a href="https://github.com/iquidus/explorer" target="_blank" class="navbar-link">Powered by Iquidus Explorer </a></p>
-        </li>
-    </ul>
 </div>
 <span class="connections"><label id="lblBlockcount" class="label label-default">-</label><label id="lblConnections" class="label label-default">-</label></span>
 </body>
