@@ -10,7 +10,7 @@
 <body>
 <div role="navigation" class="nav navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="file:///C|/My Web Sites/New folder/explore.odinblockchain.org/index.html" class="navbar-brand">Odin explorer</a></div>
+        <div class="navbar-header"><button type="button" data-toggle="collapse" data-target="#navbar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="file:///C|/My Web Sites/New folder/explore.odinblockchain.org/index.html" class="navbar-brand">Odin MasterNode Monitor</a></div>
         <div id="navbar-collapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li id="home"></li>
